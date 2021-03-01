@@ -6,6 +6,9 @@
 	"license": "MIT",
 	"main": "dist/plugin.js",
 	"types": "dist/plugin.d.ts",
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"build": "tsc",
 		"dev": "tsc --watch",
