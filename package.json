@@ -4,6 +4,7 @@
 	"description": "Use babel macros with vite",
 	"author": "MapleLeaf",
 	"license": "MIT",
+	"repository": "https://github.com/itsMapleLeaf/vite-plugin-babel-macros",
 	"main": "dist/plugin.js",
 	"types": "dist/plugin.d.ts",
 	"files": [
