@@ -31,5 +31,8 @@
 	},
 	"peerDependencies": {
 		"vite": ">=2"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org"
 	}
 }
