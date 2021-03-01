@@ -13,6 +13,7 @@
 	"scripts": {
 		"build": "tsc",
 		"dev": "tsc --watch",
+		"prepublishOnly": "pnpm run build",
 		"release": "np"
 	},
 	"dependencies": {
