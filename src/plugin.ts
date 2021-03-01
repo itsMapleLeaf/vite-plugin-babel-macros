@@ -9,6 +9,10 @@ export default function macrosPlugin(): Plugin {
 		name: "babel-macros",
 		enforce: "pre",
 		async transform(source, filename) {
+			if (filename.includes("node_modules")) {
+				return undefined
+			}
+
 			if (!sourceRegex.test(filename)) {
 				return undefined
 			}
