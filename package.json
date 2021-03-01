@@ -8,7 +8,8 @@
 	"types": "dist/plugin.d.ts",
 	"scripts": {
 		"build": "tsc",
-		"dev": "tsc --watch"
+		"dev": "tsc --watch",
+		"release": "np"
 	},
 	"dependencies": {
 		"@babel/core": "^7.13.8",
@@ -21,6 +22,7 @@
 	"devDependencies": {
 		"@types/babel-plugin-macros": "^2.8.4",
 		"@types/node": "^14.14.31",
+		"np": "^7.4.0",
 		"typescript": "^4.2.2",
 		"vite": "^2.0.4"
 	},
