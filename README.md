@@ -8,7 +8,7 @@ Use [babel macros](https://github.com/kentcdodds/babel-plugin-macros) in your [V
 npm install --dev vite-plugin-babel-macros
 ```
 
-## Add to `vite.config.js/ts`
+Then, add it to `vite.config.js` or `vite.config.ts`:
 
 ```js
 import macrosPlugin from "vite-plugin-babel-macros"
