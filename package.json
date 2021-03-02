@@ -1,5 +1,5 @@
 {
-	"name": "@itsmapleleaf/vite-plugin-babel-macros",
+	"name": "vite-plugin-babel-macros",
 	"version": "1.0.2",
 	"description": "Use babel macros with vite",
 	"author": "MapleLeaf",
