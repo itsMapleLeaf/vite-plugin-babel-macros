@@ -1,6 +1,6 @@
 {
 	"name": "vite-plugin-babel-macros",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Use babel macros with vite",
 	"author": "MapleLeaf",
 	"license": "MIT",
