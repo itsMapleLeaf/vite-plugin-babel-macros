@@ -14,7 +14,7 @@
 		"build": "trash dist && tsc -p tsconfig.build.json",
 		"test": "jest",
 		"prepublishOnly": "pnpm run build",
-		"release": "np"
+		"release": "np --no-cleanup"
 	},
 	"dependencies": {
 		"@babel/core": "^7.13.8",
