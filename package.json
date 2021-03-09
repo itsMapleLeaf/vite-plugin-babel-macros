@@ -13,6 +13,7 @@
 	"scripts": {
 		"build": "tsc",
 		"dev": "tsc --watch",
+		"test": "jest",
 		"prepublishOnly": "pnpm run build",
 		"release": "np"
 	},
@@ -26,8 +27,11 @@
 	},
 	"devDependencies": {
 		"@types/babel-plugin-macros": "^2.8.4",
+		"@types/jest": "^26.0.20",
 		"@types/node": "^14.14.31",
+		"jest": "^26.6.3",
 		"np": "^7.4.0",
+		"ts-jest": "^26.5.3",
 		"typescript": "^4.2.2",
 		"vite": "^2.0.4"
 	},
