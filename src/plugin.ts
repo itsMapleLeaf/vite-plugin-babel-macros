@@ -1,14 +1,14 @@
 import * as babel from "@babel/core"
-import type { Plugin, TransformResult } from "vite"
+import type { TransformResult } from "vite"
 
 const sourceRegex = /\.(j|t)sx?$/
-const tsxRegex = /\.tsx$/
+const tsxRegex = /\.(j|t)sx$/ // all files are being interpreted as TS, so we'll treat JSX as TSX
 
-export default function macrosPlugin(): Plugin {
+export default function macrosPlugin() {
 	return {
 		name: "babel-macros",
 		enforce: "pre",
-		async transform(source, filename) {
+		async transform(source: string, filename: string) {
 			if (filename.includes("node_modules")) {
 				return undefined
 			}
@@ -33,5 +33,5 @@ export default function macrosPlugin(): Plugin {
 			})
 			return result as TransformResult | null
 		},
-	}
+	} as const
 }
