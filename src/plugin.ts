@@ -1,7 +1,7 @@
 import * as babel from "@babel/core"
 import type { TransformResult } from "vite"
 
-const sourceRegex = /\.(js|ts|jsx|tsx|mjs|cjs)?$/
+const sourceRegex = /\.(js|ts|jsx|tsx|mjs|cjs)$/
 const jsxRegex = /\.(jsx|tsx)$/
 const tsRegex = /\.(ts|tsx)$/
 
