@@ -1,8 +1,9 @@
 import * as babel from "@babel/core"
 import type { TransformResult } from "vite"
 
-const sourceRegex = /\.(j|t)sx?$/
-const tsxRegex = /\.(j|t)sx$/ // all files are being interpreted as TS, so we'll treat JSX as TSX
+const sourceRegex = /\.(js|ts|jsx|tsx|mjs|cjs)?$/
+const jsxRegex = /\.(jsx|tsx)$/
+const tsRegex = /\.(ts|tsx)$/
 
 export default function macrosPlugin() {
 	return {
@@ -17,16 +18,24 @@ export default function macrosPlugin() {
 				return undefined
 			}
 
+			const plugins: babel.PluginItem[] = [
+				require.resolve("babel-plugin-macros"),
+			]
+
+			if (jsxRegex.test(filename)) {
+				plugins.push(require.resolve("@babel/plugin-syntax-jsx"))
+			}
+
+			if (tsRegex.test(filename)) {
+				plugins.push([
+					require.resolve("@babel/plugin-syntax-typescript"),
+					{ isTSX: true },
+				])
+			}
+
 			const result = await babel.transformAsync(source, {
 				filename,
-				plugins: [
-					require.resolve("@babel/plugin-syntax-jsx"),
-					[
-						require.resolve("@babel/plugin-syntax-typescript"),
-						{ isTSX: tsxRegex.test(filename) },
-					],
-					require.resolve("babel-plugin-macros"),
-				],
+				plugins,
 				babelrc: false,
 				configFile: false,
 				sourceMaps: true,
