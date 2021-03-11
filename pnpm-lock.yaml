@@ -11,6 +11,8 @@ devDependencies:
   '@types/node': 14.14.33
   jest: 26.6.3
   np: 7.4.0
+  prettier: 2.2.1
+  preval.macro: 5.0.0
   trash-cli: 4.0.0
   ts-jest: 26.5.3_jest@26.6.3+typescript@4.2.3
   typescript: 4.2.3
@@ -284,6 +286,12 @@ packages:
       '@babel/core': ^7.0.0-0
     resolution:
       integrity: sha512-cHP3u1JiUiG2LFDKbXnwVad81GvfyIOmCD6HIEId6ojrY0Drfy2q1jw7BwN7dE84+kTnBjLkXoL3IEy/3JPu2w==
+  /@babel/runtime/7.13.10:
+    dependencies:
+      regenerator-runtime: 0.13.7
+    dev: true
+    resolution:
+      integrity: sha512-4QPkjJq6Ns3V/RgpEahRk+AGfL0eO6RHHtTWoNNr5mO49G6B5+X6d6THgWEAvTrznU5xYpbAlVKRYcsCgh/Akw==
   /@babel/runtime/7.13.8:
     dependencies:
       regenerator-runtime: 0.13.7
@@ -1052,6 +1060,14 @@ packages:
       node: '>= 10.14.2'
     resolution:
       integrity: sha512-PO9t0697lNTmcEHH69mdtYiOIkkOlj9fySqfO3K1eCcdISevLAE0xY59VLLUj0SoiPiTX/JU2CYFpILydUa5Lw==
+  /babel-plugin-macros/2.8.0:
+    dependencies:
+      '@babel/runtime': 7.13.10
+      cosmiconfig: 6.0.0
+      resolve: 1.20.0
+    dev: true
+    resolution:
+      integrity: sha512-SEP5kJpfGYqYKpBrj5XU3ahw5p5GOHJ0U5ssOSQ/WBVdwkD2Dzlce95exQTs3jOVWPPKLBN2rlEWkCK7dSmLvg==
   /babel-plugin-macros/3.0.1:
     dependencies:
       '@babel/runtime': 7.13.8
@@ -1063,6 +1079,17 @@ packages:
       npm: '>=6'
     resolution:
       integrity: sha512-CKt4+Oy9k2wiN+hT1uZzOw7d8zb1anbQpf7KLwaaXRCi/4pzKdFKHf7v5mvoPmjkmxshh7eKZQuRop06r5WP4w==
+  /babel-plugin-preval/5.0.0:
+    dependencies:
+      '@babel/runtime': 7.13.10
+      babel-plugin-macros: 2.8.0
+      require-from-string: 2.0.2
+    dev: true
+    engines:
+      node: '>=10'
+      npm: '>=6'
+    resolution:
+      integrity: sha512-8DqJq6/LPUjSZ0Qq6bVIFpsj2flCEE0Cbnbut9TvGU6jP9g3dOWEXtQ/sdvsA9d6souza8eNGh04WRXpuH9ThA==
   /babel-preset-current-node-syntax/1.0.1_@babel+core@7.13.10:
     dependencies:
       '@babel/core': 7.13.10
@@ -1512,6 +1539,18 @@ packages:
     dev: true
     resolution:
       integrity: sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
+  /cosmiconfig/6.0.0:
+    dependencies:
+      '@types/parse-json': 4.0.0
+      import-fresh: 3.3.0
+      parse-json: 5.2.0
+      path-type: 4.0.0
+      yaml: 1.10.0
+    dev: true
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-xb3ZL6+L8b9JLLCx3ZdoZy4+2ECphCMo2PwqgP1tlfVq6M6YReyzBJtvWWtbDSpNr9hn96pkCiZqUcFEc+54Qg==
   /cosmiconfig/7.0.0:
     dependencies:
       '@types/parse-json': 4.0.0
@@ -4563,6 +4602,13 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
+  /prettier/2.2.1:
+    dev: true
+    engines:
+      node: '>=10.13.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-PqyhM2yCjg/oKkFPtTGUojv7gnZAoG80ttl45O6x2Ug/rMJw4wcc9k6aaf2hibP7BGVCCM33gZoGjyvt9mm16Q==
   /pretty-format/26.6.2:
     dependencies:
       '@jest/types': 26.6.2
@@ -4574,6 +4620,14 @@ packages:
       node: '>= 10'
     resolution:
       integrity: sha512-7AeGuCYNGmycyQbCqd/3PWH4eOoX/OiCa0uphp57NVTeAGdJGaAliecxwBDHYQCIvrW7aDBZCYeNTP/WX69mkg==
+  /preval.macro/5.0.0:
+    dependencies:
+      babel-plugin-preval: 5.0.0
+    dev: true
+    engines:
+      node: '>=10'
+    resolution:
+      integrity: sha512-+OZRqZYx1pjZ7H5Jis8bPFXkiT7lwA46UzAT4IjuzFVKwkJK+TwIx1TCqrqNCf8U3e5O12mEJEz1BXslkCLWfQ==
   /prompts/2.4.0:
     dependencies:
       kleur: 3.0.3
@@ -4669,7 +4723,6 @@ packages:
     resolution:
       integrity: sha512-6tDA8g98We0zd0GvVeMT9arEOnTw9qM03L9cJXaCjrip1OO764RDBLBfrB4cwzNGDj5OA5ioymC9GkizgWJDUg==
   /regenerator-runtime/0.13.7:
-    dev: false
     resolution:
       integrity: sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
   /regex-not/1.0.2:
@@ -4772,6 +4825,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-jGStX9MNqxyXbiNE/+f3kqam30I=
+  /require-from-string/2.0.2:
+    dev: true
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==
   /require-main-filename/2.0.0:
     dev: true
     resolution:
@@ -5989,6 +6048,8 @@ specifiers:
   babel-plugin-macros: ^3.0.1
   jest: ^26.6.3
   np: ^7.4.0
+  prettier: ^2.2.1
+  preval.macro: ^5.0.0
   trash-cli: ^4.0.0
   ts-jest: ^26.5.3
   tslib: ^2.1.0
