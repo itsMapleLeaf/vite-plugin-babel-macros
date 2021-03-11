@@ -1,4 +1,6 @@
-import type { Plugin } from "vite"
+import { join } from "path"
+import type { OutputChunk } from "rollup"
+import { build, Plugin } from "vite"
 import macrosPlugin from "./plugin"
 
 test("macros", async () => {
@@ -18,3 +20,22 @@ test(".jsx files shouldn't throw", async () => {
 	const result = await macrosPlugin().transform(`<div/>`, "file.jsx")
 	expect(result).not.toBeNull()
 })
+
+test("vite integration", async () => {
+	let result = await build({
+		root: join(__dirname, "../test/fixture"),
+		plugins: [macrosPlugin()],
+		logLevel: "silent",
+		build: {
+			minify: false,
+			write: false,
+		},
+	})
+	result = [result].flat()[0]
+
+	const code = result.output.find(
+		(item): item is OutputChunk => item.type === "chunk",
+	)?.code
+
+	expect(code).toContain(`alert("it's a secret\\n")`)
+}, 10000)

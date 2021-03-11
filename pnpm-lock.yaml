@@ -13,6 +13,7 @@ devDependencies:
   np: 7.4.0
   prettier: 2.2.1
   preval.macro: 5.0.0
+  rollup: 2.41.1
   trash-cli: 4.0.0
   ts-jest: 26.5.3_jest@26.6.3+typescript@4.2.3
   typescript: 4.2.3
@@ -4924,6 +4925,15 @@ packages:
       fsevents: 2.3.2
     resolution:
       integrity: sha512-WiOGAPbXoHu+TOz6hyYUxIksOwsY/21TRWoO593jgYt8mvYafYqQl+axaA8y1z2HFazNUUrsMSjahV2A6/2R9A==
+  /rollup/2.41.1:
+    dev: true
+    engines:
+      node: '>=10.0.0'
+    hasBin: true
+    optionalDependencies:
+      fsevents: 2.3.2
+    resolution:
+      integrity: sha512-nepLFAW5W71/MWpS2Yr7r31eS7HRfYg2RXnxb6ehqN9zY42yACxKtEfb4xq8SmNfUohAzGMcyl6jkwdLOAiUbg==
   /rsvp/4.8.5:
     dev: true
     engines:
@@ -6050,6 +6060,7 @@ specifiers:
   np: ^7.4.0
   prettier: ^2.2.1
   preval.macro: ^5.0.0
+  rollup: ^2.41.1
   trash-cli: ^4.0.0
   ts-jest: ^26.5.3
   tslib: ^2.1.0
