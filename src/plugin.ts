@@ -27,7 +27,7 @@ export default function macrosPlugin() {
 					],
 					require.resolve("babel-plugin-macros"),
 				],
-				babelrc: false,
+				babelrc: true,
 				configFile: false,
 				sourceMaps: true,
 			})
