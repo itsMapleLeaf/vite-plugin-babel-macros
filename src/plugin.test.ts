@@ -1,42 +1,56 @@
+import { createRequire } from "module"
 import { join } from "path"
 import type { OutputChunk, RollupOutput } from "rollup"
 import { build, Plugin } from "vite"
-import { expect, test } from "vitest"
-import macrosPlugin from "./plugin"
+import { describe, expect, test } from "vitest"
+import macrosPluginEsm from ".."
 
-test("macros", async () => {
-  const code = `
-	import preval from 'preval.macro'
-	const result = preval\`module.exports = 1 + 2\`
-	`
-  const result = await macrosPlugin().transform(code, "file.js")
-  expect(result?.code).toMatchInlineSnapshot(`"const result = 3;"`)
+const require = createRequire(import.meta.url)
+const macrosPluginCjs = require("../dist/plugin.cjs").default
+
+describe("esm", () => {
+  definePluginTests(macrosPluginEsm)
 })
 
-test("typechecks as a vite plugin", () => {
-  const plugin: Plugin = macrosPlugin()
+describe("cjs", () => {
+  definePluginTests(macrosPluginCjs)
 })
 
-test(".jsx files shouldn't throw", async () => {
-  const result = await macrosPlugin().transform(`<div/>`, "file.jsx")
-  expect(result).not.toBeNull()
-})
-
-test("vite integration", async () => {
-  let result = await build({
-    root: join(__dirname, "../test/fixture"),
-    plugins: [macrosPlugin()],
-    logLevel: "silent",
-    build: {
-      minify: false,
-      write: false,
-    },
+function definePluginTests(macrosPlugin: typeof macrosPluginEsm) {
+  test("macros", async () => {
+    const code = `
+    import preval from 'preval.macro'
+    const result = preval\`module.exports = 1 + 2\`
+    `
+    const result = await macrosPlugin().transform(code, "file.js")
+    expect(result?.code).toMatchInlineSnapshot(`"const result = 3;"`)
   })
-  result = [result].flat()[0] as RollupOutput
 
-  const code = result.output.find(
-    (item): item is OutputChunk => item.type === "chunk",
-  )?.code
+  test("typechecks as a vite plugin", () => {
+    const plugin: Plugin = macrosPlugin()
+  })
 
-  expect(code).toContain(`alert("it's a secret\\n")`)
-}, 10000)
+  test(".jsx files shouldn't throw", async () => {
+    const result = await macrosPlugin().transform(`<div/>`, "file.jsx")
+    expect(result).not.toBeNull()
+  })
+
+  test("vite integration", async () => {
+    let result = await build({
+      root: join(__dirname, "../test/fixture"),
+      plugins: [macrosPlugin()],
+      logLevel: "silent",
+      build: {
+        minify: false,
+        write: false,
+      },
+    })
+    result = [result].flat()[0] as RollupOutput
+
+    const code = result.output.find(
+      (item): item is OutputChunk => item.type === "chunk",
+    )?.code
+
+    expect(code).toContain(`alert("it's a secret\\n")`)
+  }, 10000)
+}
