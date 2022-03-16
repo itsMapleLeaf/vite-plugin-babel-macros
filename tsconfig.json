@@ -1,13 +1,12 @@
 {
-	"compilerOptions": {
-		"target": "es2019",
-		"module": "commonjs",
-		"strict": true,
-		"rootDir": "src",
-		"outDir": "dist",
-		"declaration": true,
-		"esModuleInterop": true,
-		"importHelpers": true,
-		"importsNotUsedAsValues": "error"
-	}
+  "compilerOptions": {
+    "target": "es2021",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "importsNotUsedAsValues": "error",
+    "noEmit": true
+  }
 }
