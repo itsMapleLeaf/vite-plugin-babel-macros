@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "build": "tsup src/plugin.ts --clean --target node16 --format cjs,esm --dts --sourcemap",
-    "test": "vitest",
+    "test": "vitest --run",
     "prepublishOnly": "pnpm run build",
     "release": "pnpm install && np --no-cleanup"
   },
