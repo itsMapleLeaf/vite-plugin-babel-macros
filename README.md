@@ -5,7 +5,7 @@ Use [babel macros](https://github.com/kentcdodds/babel-plugin-macros) in your [V
 ## Install
 
 ```sh
-npm install --dev vite-plugin-babel-macros
+npm install --save-dev vite-plugin-babel-macros
 ```
 
 Then, add it to `vite.config.js` or `vite.config.ts`:
